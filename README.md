@@ -1,6 +1,6 @@
-# Ciseco Next.js & Tailwind CSS template
+# Mooni Next.js & Tailwind CSS template
 
-To run the Ciseco template, first install the npm dependencies:
+To run the Mooni template, first install the npm dependencies:
 
 ```bash
 npm install
