@@ -47,7 +47,7 @@ async function PageHome() {
         <div className="pb-16">
           <SectionHowItWork />
         </div>
-        <SectionPromo1 />
+        {/* <SectionPromo1 /> */}
         <div className="relative pt-24 pb-20 lg:pt-28">
           <BackgroundSection />
           <SectionGridMoreExplore groupCollections={groupCollections} />
@@ -63,7 +63,7 @@ async function PageHome() {
         <Divider />
         <SectionCollectionSlider2 collections={departmentCollections} />
         <Divider />
-        <div>
+        {/* <div>
           <Heading headingDim="From the Mooni blog">The latest news</Heading>
           <SectionMagazine5 posts={blogPosts} />
           <div className="mt-20 flex justify-center">
@@ -72,9 +72,9 @@ async function PageHome() {
               <ArrowRightIcon className="h-4 w-4" />
             </Button>
           </div>
-        </div>
+        </div> */}
 
-        <Divider />
+        {/* <Divider /> */}
         <SectionClientSay />
       </div>
     </div>
