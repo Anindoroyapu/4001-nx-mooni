@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 
 const calculateTimeLeft = () => {
   let year = new Date().getFullYear();
-  let month = new Date().getMonth();
-  let difference = +new Date(`${month + 2}/10/${year}`) - +new Date();
+  let currentDate = new Date();
+  let targetDate = new Date(year, 0, 15); // January 15th of current year
+  if (currentDate > targetDate) {
+    targetDate = new Date(year + 1, 0, 15); // January 15th of next year
+  }
+  let difference = +targetDate - +currentDate;
 
   let timeLeft = {
     days: 0,
