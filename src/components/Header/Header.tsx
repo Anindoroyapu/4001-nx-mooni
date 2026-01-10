@@ -6,9 +6,7 @@ import { FC } from 'react'
 import AvatarDropdown from './AvatarDropdown'
 import CartBtn from './CartBtn'
 import CategoriesDropdown from './CategoriesDropdown'
-import CurrLangDropdown from './CurrLangDropdown'
 import HamburgerBtnMenu from './HamburgerBtnMenu'
-import MegaMenuPopover from './MegaMenuPopover'
 import SearchBtnPopover from './SearchBtnPopover'
 export interface HeaderProps {
   hasBorderBottom?: boolean

@@ -1,12 +1,8 @@
 'use client'
 
-import avatarImage from '@/images/users/avatar4.jpg'
-import Avatar from '@/shared/Avatar/Avatar'
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { UserCircle02Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { Divider } from '../Divider'
-import { Link } from '../Link'
 
 interface Props {
   className?: string
@@ -25,7 +21,7 @@ export default function AvatarDropdown({ className }: Props) {
           anchor="bottom end"
           className="z-10 mt-3 w-80 rounded-3xl px-4 shadow-lg ring-1 ring-black/5 transition duration-200 ease-in-out data-closed:translate-y-1 data-closed:opacity-0 sm:px-0"
         >
-          <div className="relative grid grid-cols-1 gap-6 bg-white px-6 py-7 dark:bg-neutral-800">
+          {/* <div className="relative grid grid-cols-1 gap-6 bg-white px-6 py-7 dark:bg-neutral-800">
             <div className="flex items-center space-x-3">
               <Avatar imgUrl={avatarImage.src} sizeClass="size-12" />
 
@@ -37,7 +33,6 @@ export default function AvatarDropdown({ className }: Props) {
 
             <Divider />
 
-            {/* ------------------ 1 --------------------- */}
             <Link
               href={'/account'}
               className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-hidden focus-visible:ring-3 focus-visible:ring-orange-500/50 dark:hover:bg-neutral-700"
@@ -65,7 +60,6 @@ export default function AvatarDropdown({ className }: Props) {
               </div>
             </Link>
 
-            {/* ------------------ 2 --------------------- */}
             <Link
               href={'/orders'}
               className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-hidden focus-visible:ring-3 focus-visible:ring-orange-500/50 dark:hover:bg-neutral-700"
@@ -111,7 +105,6 @@ export default function AvatarDropdown({ className }: Props) {
               </div>
             </Link>
 
-            {/* ------------------ 2 --------------------- */}
             <Link
               href={'/account-wishlists'}
               className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-hidden focus-visible:ring-3 focus-visible:ring-orange-500/50 dark:hover:bg-neutral-700"
@@ -134,7 +127,7 @@ export default function AvatarDropdown({ className }: Props) {
 
             <Divider />
 
-            {/* ------------------ 2 --------------------- */}
+            
             <Link
               href={'#'}
               className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-hidden focus-visible:ring-3 focus-visible:ring-orange-500/50 dark:hover:bg-neutral-700"
@@ -190,7 +183,6 @@ export default function AvatarDropdown({ className }: Props) {
               </div>
             </Link>
 
-            {/* ------------------ 2 --------------------- */}
             <Link
               href={'#'}
               className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-hidden focus-visible:ring-3 focus-visible:ring-orange-500/50 dark:hover:bg-neutral-700"
@@ -224,7 +216,7 @@ export default function AvatarDropdown({ className }: Props) {
                 <p className="text-sm font-medium">{'Log out'}</p>
               </div>
             </Link>
-          </div>
+          </div> */}
         </PopoverPanel>
       </Popover>
     </div>
