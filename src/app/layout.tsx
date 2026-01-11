@@ -25,7 +25,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-200">
         <Aside.Provider>
           {children}
-
           {/* Client component: Toaster, ... */}
           <GlobalClient />
         </Aside.Provider>
