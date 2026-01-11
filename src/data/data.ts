@@ -643,7 +643,7 @@ export function getCart(id: string) {
 }
 
 // ------------------------  DATA ------------------------
-export async function getCollections() {
+export const getCollections=()=> {
   return [
     // default collections 1 - 7
     {
@@ -886,8 +886,8 @@ export async function getCollections() {
   ]
 }
 
-export async function getGroupCollections() {
-  const allCollections = await getCollections()
+export const getGroupCollections=()=> {
+  const allCollections =  getCollections()
   const collections = allCollections.slice(0, 6)
   return [
     {

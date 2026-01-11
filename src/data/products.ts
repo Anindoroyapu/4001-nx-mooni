@@ -1,7 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react'
+import productImage1 from '@/images/products/p1.jpg'
 
-export async function getProducts() {
+export const getProducts = () => {
   const [products, setProducts] = useState<any>(null)
   useEffect(() => {
     fetchData()
@@ -16,102 +17,101 @@ export async function getProducts() {
       console.error('Error fetching data:', error)
     }
   }
+ 
 
-  return [
-    products?.map((item: any) => ({
-      id: item.id,
-      title: item.title,
-      handle: 'leather-tote-bag',
-      createdAt: item.createdAt,
-      vendor: 'Mooni',
-      price: item.price,
-      featuredImage: {
-        src: item?.def,
+  return products?.map((item: any) => ({
+    id: item.id,
+    title: item.title,
+    handle: 'leather-tote-bag',
+    createdAt: item.createdAt,
+    vendor: 'Mooni',
+    price: item.priceSale,
+    featuredImage: {
+      src: item?.defaultImage || productImage1.src,
+      width: productImage1.width,
+      height: productImage1.height,
+      alt: 'Leather Tote Bag',
+    },
+    images: [
+      {
+        src: item?.defaultImage || productImage1.src,
         width: productImage1.width,
         height: productImage1.height,
         alt: 'Leather Tote Bag',
       },
-      images: [
-        {
-          src: productImage1.src,
-          width: productImage1.width,
-          height: productImage1.height,
-          alt: 'Leather Tote Bag',
-        },
-      ],
-      reviewNumber: 87,
-      rating: 4.5,
-      status: 'New in',
-      options: [
-        {
-          name: 'Color',
-          optionValues: [
-            {
-              name: 'Black',
-              swatch: {
-                color: '#000000',
-                image: null,
-              },
+    ],
+    reviewNumber: 87,
+    rating: 4.5,
+    status: 'New in',
+    options: [
+      {
+        name: 'Color',
+        optionValues: [
+          {
+            name: 'Black',
+            swatch: {
+              color: '#000000',
+              image: null,
             },
-            {
-              swatch: {
-                color: 'oklch(42.1% 0.095 57.708)',
-                image: null,
-              },
-              name: 'Pink Yarrow',
+          },
+          {
+            swatch: {
+              color: 'oklch(42.1% 0.095 57.708)',
+              image: null,
             },
-            {
-              swatch: {
-                color: '#D1C9C1',
-                image: null,
-              },
-              name: 'indigo',
+            name: 'Pink Yarrow',
+          },
+          {
+            swatch: {
+              color: '#D1C9C1',
+              image: null,
             },
-            {
-              swatch: {
-                color: '#f7e3d4',
-                image: null,
-              },
-              name: 'Stone',
+            name: 'indigo',
+          },
+          {
+            swatch: {
+              color: '#f7e3d4',
+              image: null,
             },
-          ],
-        },
-        {
-          name: 'Size',
-          optionValues: [
-            {
-              swatch: null,
-              name: 'XXS',
-            },
-            {
-              swatch: null,
-              name: 'XS',
-            },
-            {
-              swatch: null,
-              name: 'M',
-            },
-            {
-              swatch: null,
-              name: 'L',
-            },
-            {
-              swatch: null,
-              name: 'XL',
-            },
-          ],
-        },
-      ],
-      selectedOptions: [
-        {
-          name: 'Color',
-          value: 'Pink Yarrow',
-        },
-        {
-          name: 'Size',
-          value: 'XS',
-        },
-      ],
-    })),
-  ]
+            name: 'Stone',
+          },
+        ],
+      },
+      {
+        name: 'Size',
+        optionValues: [
+          {
+            swatch: null,
+            name: 'XXS',
+          },
+          {
+            swatch: null,
+            name: 'XS',
+          },
+          {
+            swatch: null,
+            name: 'M',
+          },
+          {
+            swatch: null,
+            name: 'L',
+          },
+          {
+            swatch: null,
+            name: 'XL',
+          },
+        ],
+      },
+    ],
+    selectedOptions: [
+      {
+        name: 'Color',
+        value: 'Pink Yarrow',
+      },
+      {
+        name: 'Size',
+        value: 'XS',
+      },
+    ],
+  })) || []
 }

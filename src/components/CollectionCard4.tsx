@@ -1,3 +1,4 @@
+
 import { TCollection } from '@/data/data'
 import { ArrowUpRightIcon } from '@heroicons/react/24/solid'
 import clsx from 'clsx'
@@ -30,7 +31,7 @@ const CollectionCard4: FC<CollectionCard4Props> = ({ className, bgSvgUrl, collec
 
       <div className="flex flex-col justify-between">
         <div className="flex items-center justify-between gap-x-2.5">
-          {collection.image?.src && (
+          {collection?.image?.src && (
             <div className={clsx('relative size-20 overflow-hidden rounded-full', collection.color)}>
               <div className="absolute inset-4">
                 <Image alt={collection.image?.alt} src={collection.image} fill sizes="80px" className="object-cover" />
@@ -51,7 +52,7 @@ const CollectionCard4: FC<CollectionCard4Props> = ({ className, bgSvgUrl, collec
           />
         </div>
 
-        <p className="mt-10 text-sm text-neutral-500 sm:mt-20 dark:text-neutral-400">{collection.count} products</p>
+        <p className="mt-10 text-sm text-neutral-500 sm:mt-20 dark:text-neutral-400">{collection?.count} products</p>
 
         <Link href={'/collections/' + collection.handle} className="absolute inset-0"></Link>
       </div>

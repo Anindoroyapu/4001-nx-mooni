@@ -1,3 +1,5 @@
+'use client'
+import { FC } from 'react'
 import BackgroundSection from '@/components/BackgroundSection/BackgroundSection'
 import { Divider } from '@/components/Divider'
 import SectionClientSay from '@/components/SectionClientSay'
@@ -14,25 +16,19 @@ import { getBlogPosts, getCollections, getGroupCollections } from '@/data/data'
 import { getProducts } from '@/data/products'
 
 
-import { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'Home',
-  description:
-    'Mooni is a modern and elegant template for Next.js, Tailwind CSS, and TypeScript. It is designed to be simple and easy to use, with a focus on performance and accessibility.',
-  keywords: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Mooni', 'Headless UI', 'Fashion', 'E-commerce'],
-}
-
-async function PageHome() {
-  const allCollections = await getCollections()
+const PageHome: FC = () => {
+  const allCollections = getCollections()
   const departmentCollections = allCollections.slice(11, 15)
   const featuredCollections = allCollections.slice(7, 11)
-  const groupCollections = await getGroupCollections()
-  const {products} = await getProducts()
+  const groupCollections = getGroupCollections()
+  const products = getProducts()
   const carouselProducts1 = products.slice(0, 5)
   const carouselProducts2 = products.slice(3, 10)
   const carouselProducts3 = products.slice(1, 5)
-  const blogPosts = await getBlogPosts()
+  const blogPosts = getBlogPosts()
+
+  
 
   return (
     <div className="nc-PageHome relative overflow-hidden">
