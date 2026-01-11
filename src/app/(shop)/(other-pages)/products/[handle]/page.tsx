@@ -8,7 +8,8 @@ import ProductForm from '@/components/ProductForm/ProductForm'
 import ProductSizeOptions from '@/components/ProductForm/ProductSizeOptions'
 import SectionPromo2 from '@/components/SectionPromo2'
 import SectionSliderProductCard from '@/components/SectionSliderProductCard'
-import { getProductDetailByHandle, getProductReviews, getProducts } from '@/data/data'
+import { getProductDetailByHandle, getProductReviews } from '@/data/data'
+import { getProducts } from '@/data/products'
 import Breadcrumb from '@/shared/Breadcrumb'
 import ButtonPrimary from '@/shared/Button/ButtonPrimary'
 import { StarIcon } from '@heroicons/react/24/solid'
@@ -44,8 +45,8 @@ export default async function Page({ params }: { params: Promise<{ handle: strin
 
   const { title, status, featuredImage, rating, reviewNumber, options, price, selectedOptions, images, breadcrumbs } =
     product
-  const sizeSelected = selectedOptions?.find((option) => option.name === 'Size')?.value || ''
-  const colorSelected = selectedOptions?.find((option) => option.name === 'Color')?.value || ''
+  const sizeSelected = selectedOptions?.find((option: any) => option.name === 'Size')?.value || ''
+  const colorSelected = selectedOptions?.find((option: any) => option.name === 'Color')?.value || ''
 
   const renderRightSide = () => {
     return (

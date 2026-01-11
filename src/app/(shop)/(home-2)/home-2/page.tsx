@@ -11,7 +11,9 @@ import SectionPromo3 from '@/components/SectionPromo3'
 import SectionSliderLargeProduct from '@/components/SectionSliderLargeProduct'
 import SectionSliderProductCard from '@/components/SectionSliderProductCard'
 import SectionMagazine5 from '@/components/blog/SectionMagazine5'
-import { getBlogPosts, getCollections, getGroupCollections, getProducts } from '@/data/data'
+import { getBlogPosts, getCollections, getGroupCollections } from '@/data/data'
+import { getProducts } from '@/data/products'
+
 import ButtonSecondary from '@/shared/Button/ButtonSecondary'
 import { Metadata } from 'next'
 

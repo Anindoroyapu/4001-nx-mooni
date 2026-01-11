@@ -1,7 +1,9 @@
 import { Divider } from '@/components/Divider'
 import SectionPromo1 from '@/components/SectionPromo1'
 import SectionSliderLargeProduct from '@/components/SectionSliderLargeProduct'
-import { getCollectionByHandle, getProducts } from '@/data/data'
+import { getCollectionByHandle } from '@/data/data'
+import { getProducts } from '@/data/products'
+
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import React from 'react'

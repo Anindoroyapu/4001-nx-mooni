@@ -3,7 +3,7 @@ import HeaderFilterSection from '@/components/HeaderFilterSection'
 import ProductCard from '@/components/ProductCard'
 import SectionPromo1 from '@/components/SectionPromo1'
 import SectionSliderLargeProduct from '@/components/SectionSliderLargeProduct'
-import { getProducts } from '@/data/data'
+import { getProducts } from '@/data/products'
 import ButtonCircle from '@/shared/Button/ButtonCircle'
 import {
   Pagination,

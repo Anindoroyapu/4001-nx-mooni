@@ -1,6 +1,6 @@
 import { FiltersMenuSidebar } from '@/components/FiltersMenu'
 import ProductCard from '@/components/ProductCard'
-import { getProducts } from '@/data/data'
+import { getProducts } from '@/data/products'
 import {
   Pagination,
   PaginationList,
