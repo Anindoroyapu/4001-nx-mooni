@@ -12,6 +12,7 @@ const NcImage: FC<NcImageProps> = ({
   className = "object-cover w-full h-full",
   ...args
 }) => {
+  
   return (
     <div className={containerClassName}>
       <Image className={className} alt={alt} {...args} />

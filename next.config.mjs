@@ -15,6 +15,10 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'http',
+        hostname: 'admin.ashaa.xyz',
+      },
     ],
   },
 }
