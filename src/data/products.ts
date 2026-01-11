@@ -1,9 +1,8 @@
 'use client'
 import { useEffect, useState } from 'react'
 
-export const getProducts = () => {
+export async function getProducts() {
   const [products, setProducts] = useState<any>(null)
-
   useEffect(() => {
     fetchData()
   }, [])
