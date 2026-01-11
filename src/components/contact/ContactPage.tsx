@@ -47,7 +47,7 @@ const PageContact =() => {
 
  
   const handleSubmit = async (e: any) => {
-    e.preventDefault();
+   
     try {
       const endpointBase = "https://admin.ashaa.xyz/api/MooniContact";
       
@@ -68,6 +68,13 @@ const PageContact =() => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
+      });
+      setFormData({
+        fullName:  '',
+        email:  '',
+        phone:   '',
+        subject:   '',
+        message:   '',
       });
     } catch (err) {
       console.error("POST Error:", err);
@@ -122,9 +129,9 @@ const PageContact =() => {
 
                   <Field>
                     <Label>Message</Label>
-                    <Textarea name="message" rows={6} />
+                    <Textarea name="message" rows={6} value={formData.message} onChange={handleChange} />
                   </Field>
-                  <ButtonPrimary type="submit">Send Message</ButtonPrimary>
+                  <ButtonPrimary type="submit" className='cursor-pointer'>Send Message</ButtonPrimary>
                 </FieldGroup>
               </Fieldset>
             </Form>
