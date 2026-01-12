@@ -33,7 +33,7 @@ const PageHome: FC = () => {
   return (
     <div className="nc-PageHome relative overflow-hidden">
       <SectionHero2 />
-      <SectionCollectionSlider className="mt-24 lg:mt-32" collections={featuredCollections} />
+      {/* <SectionCollectionSlider className="mt-24 lg:mt-32" collections={featuredCollections} /> */}
 
       <div className="relative container my-24 flex flex-col gap-y-24 lg:my-32 lg:gap-y-32">
         <SectionSliderProductCard data={carouselProducts1} />
@@ -54,9 +54,9 @@ const PageHome: FC = () => {
         <SectionPromo2 />
         <SectionSliderLargeProduct products={carouselProducts3} />
         <SectionGridFeatureItems data={products} />
-        <Divider />
-        <SectionCollectionSlider2 collections={departmentCollections} />
-        <Divider />
+        {/* <Divider /> */}
+        {/* <SectionCollectionSlider2 collections={departmentCollections} /> */}
+        {/* <Divider /> */}
         {/* <div>
           <Heading headingDim="From the Mooni blog">The latest news</Heading>
           <SectionMagazine5 posts={blogPosts} />
@@ -69,7 +69,7 @@ const PageHome: FC = () => {
         </div> */}
 
         {/* <Divider /> */}
-        <SectionClientSay />
+        {/* <SectionClientSay /> */}
       </div>
     </div>
   )

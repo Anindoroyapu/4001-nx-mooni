@@ -1006,7 +1006,7 @@ export async function getProductByHandle(handle: string) {
   handle = handle.toLowerCase()
 
   const products = await getProducts()
-  let product = products.find((product) => product.handle === handle)
+  let product = products.find((product:any) => product.handle === handle)
 
   if (!product) {
     // throw new Error(`Product with handle "${handle}" not found.`)

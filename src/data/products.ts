@@ -22,22 +22,22 @@ export const getProducts = () => {
   return products?.map((item: any) => ({
     id: item.id,
     title: item.title,
-    handle: 'leather-tote-bag',
+    handle: item.title.toLowerCase().replace(/\s+/g, '-'),
     createdAt: item.createdAt,
     vendor: 'Mooni',
     price: item.priceSale,
     featuredImage: {
-      src: item?.defaultImage || productImage1.src,
+      src: item?.defaultImage || productImage1,
       width: productImage1.width,
       height: productImage1.height,
-      alt: 'Leather Tote Bag',
+      alt: item.title,
     },
     images: [
       {
         src: item?.defaultImage || productImage1.src,
         width: productImage1.width,
         height: productImage1.height,
-        alt: 'Leather Tote Bag',
+        alt: item.title,
       },
     ],
     reviewNumber: 87,

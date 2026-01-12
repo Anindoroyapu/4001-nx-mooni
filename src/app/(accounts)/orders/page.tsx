@@ -36,7 +36,7 @@ const Order = ({ order }: { order: TOrder }) => {
               <Image
                 fill
                 sizes="100px"
-                src={featuredImage}
+                src={featuredImage.src}
                 alt={featuredImage.alt}
                 className="h-full w-full object-cover object-center"
               />
