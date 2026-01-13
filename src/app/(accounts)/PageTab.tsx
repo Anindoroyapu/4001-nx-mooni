@@ -11,10 +11,10 @@ const pages: {
     name: 'Settings',
     link: '/account',
   },
-  {
-    name: 'Wishlists',
-    link: '/account-wishlists',
-  },
+  // {
+  //   name: 'Wishlists',
+  //   link: '/account-wishlists',
+  // },
   {
     name: 'Orders history',
     link: '/orders',
