@@ -29,7 +29,8 @@ const SectionPromo2: FC<SectionPromo2Props> = ({ className }) => {
             Fashion is a form of self-expression and autonomy at a particular period and place.
           </span>
           <div className="mt-6 flex space-x-2 sm:mt-12 sm:space-x-5">
-            <ButtonPrimary href="/search">Discover more</ButtonPrimary>
+            {/* <ButtonPrimary href="/search">Discover more</ButtonPrimary> */}
+            <ButtonPrimary href="/">Discover more</ButtonPrimary>
           </div>
         </div>
 

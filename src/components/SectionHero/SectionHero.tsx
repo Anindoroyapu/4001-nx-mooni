@@ -27,11 +27,13 @@ const SectionHero: FC<Props> = ({
             {subHeading}
           </span>
           <div className="flex space-x-4 pt-7">
-            <ButtonPrimary href="/search">
-              <span>Explore</span>
+            {/* <ButtonPrimary href="/search"> */}
+                 <ButtonPrimary href="/"> 
+              <span>Explore</span> 
               <MagnifyingGlassIcon className="ml-2.5 h-5 w-5" />
             </ButtonPrimary>
-            <ButtonSecondary href="/search">
+            {/* <ButtonSecondary href="/search"> */}
+            <ButtonSecondary href="/">
               <span>Create</span>
               <svg className="ml-2.5 h-5 w-5" viewBox="0 0 24 24" fill="none">
                 <path

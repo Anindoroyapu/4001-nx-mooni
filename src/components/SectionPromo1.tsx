@@ -23,7 +23,9 @@ const SectionPromo1: FC<SectionPromo1Props> = ({ className = '' }) => {
         </span>
         <div className="mt-6 flex flex-wrap gap-2 sm:mt-12 sm:gap-x-5">
           <ButtonPrimary href="/collection">Savings combo</ButtonPrimary>
-          <ButtonSecondary href="/search" className="border border-neutral-100 dark:border-neutral-700">
+          {/* <ButtonSecondary href="/search" className="border border-neutral-100 dark:border-neutral-700"> */}
+                    <ButtonSecondary href="/" className="border border-neutral-100 dark:border-neutral-700">
+
             Discover more
           </ButtonSecondary>
         </div>

@@ -68,7 +68,8 @@ export async function getNavigation(): Promise<TNavigationItem[]> {
           name: 'Other Pages',
           type: 'dropdown',
           children: [
-            { id: '3-2', href: '/search', name: 'Search' },
+            // { id: '3-2', href: '/search', name: 'Search' },
+                 { id: '3-2', href: '/', name: 'Search' },
             { id: '3-4', href: '/account', name: 'Account' },
             { id: '3-3', href: '/order-successful', name: 'Order Successful' },
             { id: '3-1', href: '/checkout', name: 'Checkout' },
@@ -153,7 +154,8 @@ export async function getNavigation(): Promise<TNavigationItem[]> {
         },
         {
           id: '7',
-          href: '/search',
+          // href: '/search',
+          href: '/',
           name: 'Search Page',
         },
         {

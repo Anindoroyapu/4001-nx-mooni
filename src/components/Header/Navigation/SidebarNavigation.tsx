@@ -83,7 +83,8 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ data }) => {
         onSubmit={(e) => {
           e.preventDefault()
           handleClose()
-          redirect('/search')
+          // redirect('/search')
+              redirect('/')
         }}
       >
         <div className="flex h-full items-center gap-x-2.5 rounded-xl bg-neutral-50 px-3 py-3 dark:bg-neutral-800">
