@@ -18,7 +18,7 @@ import avatarImage2 from '@/images/users/avatar2.jpg'
 import avatarImage3 from '@/images/users/avatar3.jpg'
 import avatarImage4 from '@/images/users/avatar4.jpg'
 import { shuffleArray } from '@/utils/shuffleArray'
-import { getProducts } from './products'
+import { GetProducts } from './products'
 
 export async function getOrder(number: string) {
   const allOrders = await getOrders()
@@ -1005,7 +1005,7 @@ export async function getProductByHandle(handle: string) {
   // lowercase handle
   handle = handle.toLowerCase()
 
-  const products = await getProducts()
+  const products = await GetProducts()
   let product = products.find((product:any) => product.handle === handle)
 
   if (!product) {
@@ -1065,7 +1065,7 @@ export async function getProductDetailByHandle(handle: string) {
 
 // COMMON Types ------------------------------------------------------------------------
 export type TCollection = Partial<Awaited<ReturnType<typeof getCollections>>[number]>
-export type TProductItem = Partial<Awaited<ReturnType<typeof getProducts>>[number]>
+export type TProductItem = Partial<Awaited<ReturnType<typeof GetProducts>>[number]>
 export type TProductDetail = Partial<Awaited<ReturnType<typeof getProductDetailByHandle>>>
 export type TCardProduct = Partial<Awaited<ReturnType<typeof getCart>['lines'][number]>>
 export type TBlogPost = Partial<Awaited<ReturnType<typeof getBlogPosts>>[number]>

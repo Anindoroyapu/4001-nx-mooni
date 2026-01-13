@@ -13,7 +13,7 @@ export interface Props {
 const ProductCardLarge: FC<Props> = ({ className, product }) => {
   const { images, title, price, rating, reviewNumber, handle, selectedOptions } = product
 
-  const color = selectedOptions?.find((option) => option.name === 'Color')?.value
+  const color = selectedOptions?.find((option:any) => option.name === 'Color')?.value
 
   return (
     <div className={`CollectionCard2 group relative ${className}`}>

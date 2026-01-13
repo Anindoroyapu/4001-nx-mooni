@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import productImage1 from '@/images/products/p1.jpg'
 
-export const getProducts = () => {
+export const GetProducts = () => {
   const [products, setProducts] = useState<any>(null)
   useEffect(() => {
     fetchData()

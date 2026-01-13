@@ -50,8 +50,8 @@ const ProductQuickView: FC<ProductQuickViewProps> = ({ className }) => {
   }
 
   const { title, status, featuredImage, rating, reviewNumber, options, price, selectedOptions, images } = product
-  const sizeSelected = selectedOptions?.find((option) => option.name === 'Size')?.value || ''
-  const colorSelected = selectedOptions?.find((option) => option.name === 'Color')?.value || ''
+  const sizeSelected = selectedOptions?.find((option:any) => option.name === 'Size')?.value || ''
+  const colorSelected = selectedOptions?.find((option:any) => option.name === 'Color')?.value || ''
 
   const renderStatus = () => {
     if (!status) {

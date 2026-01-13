@@ -9,7 +9,7 @@ import ProductSizeOptions from '@/components/ProductForm/ProductSizeOptions'
 import SectionPromo2 from '@/components/SectionPromo2'
 import SectionSliderProductCard from '@/components/SectionSliderProductCard'
 import { getProductDetailByHandle, getProductReviews } from '@/data/data'
-import { getProducts } from '@/data/products'
+import { GetProducts } from '@/data/products'
 import Breadcrumb from '@/shared/Breadcrumb'
 import ButtonPrimary from '@/shared/Button/ButtonPrimary'
 import { StarIcon } from '@heroicons/react/24/solid'
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
 export default async function Page({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params
   const product = await getProductDetailByHandle(handle)
-  const relatedProducts = (await getProducts()).slice(2, 8)
+  const relatedProducts = (await GetProducts()).slice(2, 8)
   const reviews = await getProductReviews(handle)
 
   if (!product.id) {

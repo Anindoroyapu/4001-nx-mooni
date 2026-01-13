@@ -16,7 +16,7 @@ const ProductColorOptions = ({
 }) => {
   const [colorSelected, setColorSelected] = useState(defaultColor)
 
-  const colorOptionValues = options?.find((option) => option.name === 'Color')?.optionValues
+  const colorOptionValues = options?.find((option:any) => option.name === 'Color')?.optionValues
 
   if (!colorOptionValues?.length) {
     return null
@@ -27,7 +27,7 @@ const ProductColorOptions = ({
       <Headless.RadioGroup value={colorSelected} name="color" onChange={setColorSelected} aria-label="Color">
         <Headless.Label className="block text-sm font-medium rtl:text-right">Color</Headless.Label>
         <div className="mt-2.5 flex gap-x-2.5">
-          {colorOptionValues.map((value) => {
+          {colorOptionValues.map((value:any) => {
             const isActive = value.name === colorSelected
 
             return (

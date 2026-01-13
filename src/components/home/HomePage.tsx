@@ -13,7 +13,7 @@ import SectionPromo2 from '@/components/SectionPromo2'
 import SectionSliderLargeProduct from '@/components/SectionSliderLargeProduct'
 import SectionSliderProductCard from '@/components/SectionSliderProductCard'
 import { getBlogPosts, getCollections, getGroupCollections } from '@/data/data'
-import { getProducts } from '@/data/products'
+import { GetProducts } from '@/data/products'
 
 
 
@@ -22,7 +22,7 @@ const PageHome: FC = () => {
   const departmentCollections = allCollections.slice(11, 15)
   const featuredCollections = allCollections.slice(7, 11)
   const groupCollections = getGroupCollections()
-  const products = getProducts()
+  const products = GetProducts()
   const carouselProducts1 = products.slice(0, 5)
   const carouselProducts2 = products.slice(3, 10)
   const carouselProducts3 = products.slice(1, 5)

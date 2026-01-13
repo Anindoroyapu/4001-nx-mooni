@@ -2,7 +2,7 @@ import { Divider } from '@/components/Divider'
 import { FilterSortByMenuListBox } from '@/components/FilterSortByMenu'
 import { FiltersMenuTabs } from '@/components/FiltersMenu'
 import ProductCard from '@/components/ProductCard'
-import { getProducts } from '@/data/products'
+import { GetProducts } from '@/data/products'
 
 import {
   Pagination,
@@ -14,7 +14,7 @@ import {
 
 export default async function Page({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params
-  const products = await getProducts()
+  const products = await GetProducts()
 
   return (
     <main>
@@ -28,7 +28,7 @@ export default async function Page({ params }: { params: Promise<{ handle: strin
 
       {/* LOOP ITEMS */}
       <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 xl:grid-cols-4">
-        {products?.map((produc) => (
+        {products?.map((produc:any) => (
           <ProductCard data={produc} key={produc.id} />
         ))}
       </div>

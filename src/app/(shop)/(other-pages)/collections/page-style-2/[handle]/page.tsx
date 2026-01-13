@@ -1,6 +1,6 @@
 import { FiltersMenuSidebar } from '@/components/FiltersMenu'
 import ProductCard from '@/components/ProductCard'
-import { getProducts } from '@/data/products'
+import { GetProducts } from '@/data/products'
 import {
   Pagination,
   PaginationList,
@@ -11,7 +11,7 @@ import {
 
 export default async function Page({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params
-  const products = await getProducts()
+  const products = await GetProducts()
 
   return (
     <main>
@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: Promise<{ handle: strin
 
         <div className="flex-1">
           <div className="grid flex-1 gap-x-8 gap-y-12 sm:grid-cols-2 xl:grid-cols-3">
-            {products.map((item) => (
+            {products.map((item:any) => (
               <ProductCard data={item} key={item.id} />
             ))}
           </div>

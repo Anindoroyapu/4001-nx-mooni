@@ -3,7 +3,7 @@ import HeaderFilterSection from '@/components/HeaderFilterSection'
 import ProductCard from '@/components/ProductCard'
 import SectionPromo1 from '@/components/SectionPromo1'
 import SectionSliderLargeProduct from '@/components/SectionSliderLargeProduct'
-import { getProducts } from '@/data/products'
+import { GetProducts } from '@/data/products'
 import ButtonCircle from '@/shared/Button/ButtonCircle'
 import {
   Pagination,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 }
 
 const PageSearch = async () => {
-  const products = await getProducts()
+  const products = await GetProducts()
   const featuredProducts = products.slice(0, 4)
 
   const handleFormSubmit = async (formData: FormData) => {
@@ -75,7 +75,7 @@ const PageSearch = async () => {
 
           {/* LOOP ITEMS */}
           <div className="mt-8 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 xl:grid-cols-4">
-            {products.map((item) => (
+            {products.map((item:any) => (
               <ProductCard data={item} key={item.id} />
             ))}
           </div>

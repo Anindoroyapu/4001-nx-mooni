@@ -2,7 +2,7 @@ import { Divider } from '@/components/Divider'
 import SectionPromo1 from '@/components/SectionPromo1'
 import SectionSliderLargeProduct from '@/components/SectionSliderLargeProduct'
 import { getCollectionByHandle } from '@/data/data'
-import { getProducts } from '@/data/products'
+import { GetProducts } from '@/data/products'
 
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -28,7 +28,7 @@ const Layout = async ({ children, params }: { children: React.ReactNode; params:
     return notFound()
   }
   const { title, description, count } = collection
-  const products = await getProducts()
+  const products = await GetProducts()
 
   return (
     <div className="container flex flex-col gap-y-20 py-20 sm:gap-y-20 lg:gap-y-28 lg:py-28">

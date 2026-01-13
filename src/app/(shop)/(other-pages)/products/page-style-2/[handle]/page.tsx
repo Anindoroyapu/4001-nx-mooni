@@ -7,7 +7,7 @@ import ProductForm from '@/components/ProductForm/ProductForm'
 import ProductSizeOptions from '@/components/ProductForm/ProductSizeOptions'
 import SectionSliderProductCard from '@/components/SectionSliderProductCard'
 import { getProductDetailByHandle, getProductReviews } from '@/data/data'
-import { getProducts } from '@/data/products'
+import { GetProducts } from '@/data/products'
 
 import ButtonPrimary from '@/shared/Button/ButtonPrimary'
 import { StarIcon } from '@heroicons/react/24/solid'
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
 export default async function Page({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params
   const product = await getProductDetailByHandle(handle)
-  const relatedProducts = (await getProducts()).slice(2, 8)
+  const relatedProducts = (await GetProducts()).slice(2, 8)
   const reviews = await getProductReviews(handle)
 
   if (!product.id) {
@@ -42,8 +42,8 @@ export default async function Page({ params }: { params: Promise<{ handle: strin
   }
 
   const { title, status, featuredImage, rating, reviewNumber, options, price, selectedOptions, images } = product
-  const sizeSelected = selectedOptions?.find((option) => option.name === 'Size')?.value || ''
-  const colorSelected = selectedOptions?.find((option) => option.name === 'Color')?.value || ''
+  const sizeSelected = selectedOptions?.find((option:any) => option.name === 'Size')?.value || ''
+  const colorSelected = selectedOptions?.find((option:any) => option.name === 'Color')?.value || ''
 
   const renderSectionSidebar = () => {
     return (
