@@ -20,12 +20,12 @@ interface Props {
 
 const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
   const { title, price, status, rating, options, handle, selectedOptions, reviewNumber, images, featuredImage } = data
-  const color = selectedOptions?.find((option) => option.name === 'Color')?.value
+  const color = selectedOptions?.find((option:any) => option.name === 'Color')?.value
 
   const { open: openAside, setProductQuickViewHandle } = useAside()
 
   const renderColorOptions = () => {
-    const optionColorValues = options?.find((option) => option.name === 'Color')?.optionValues
+    const optionColorValues = options?.find((option:any) => option.name === 'Color')?.optionValues
 
     if (!optionColorValues?.length) {
       return null
@@ -34,7 +34,7 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
  
     return (
       <div className="flex gap-2">
-        {optionColorValues.map((color) => (
+        {optionColorValues.map((color:any) => (
           <div key={color.name} className="relative size-4 cursor-pointer overflow-hidden rounded-full">
             <div
               className="absolute inset-0 z-0 rounded-full bg-cover ring-1 ring-neutral-900/20 dark:ring-white/20"
@@ -59,8 +59,8 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
           imageUrl={featuredImage?.src || ''}
           price={price || 0}
           quantity={1}
-          size={selectedOptions?.find((option) => option.name === 'Size')?.value}
-          color={selectedOptions?.find((option) => option.name === 'Color')?.value}
+          size={selectedOptions?.find((option:any) => option.name === 'Size')?.value}
+          color={selectedOptions?.find((option:any) => option.name === 'Color')?.value}
         >
           <ShoppingBagIcon className="-ml-1 size-3.5" />
           <span>Add to bag</span>
@@ -84,10 +84,11 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
   return (
     <>
       <div className={`product-card relative flex flex-col bg-transparent ${className}`}>
-        <Link href={'/products/' + handle} className="absolute inset-0"></Link>
+        {/* <Link href={'/products/' + handle} className="absolute inset-0"></Link> */}
 
         <div className="group relative z-1 shrink-0 overflow-hidden rounded-3xl bg-neutral-50 dark:bg-neutral-300">
-          <Link href={'/products/' + handle} className="block">
+          {/* <Link href={'/products/' + handle} className="block"> */}
+          <div className="block">
             {featuredImage?.src && (
               <NcImage
                 containerClassName="flex aspect-w-11 aspect-h-12 w-full h-0"
@@ -96,9 +97,9 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 40vw"
                 alt={handle}
-              />
+              /> 
             )}
-          </Link>
+          </div>
           <ProductStatus status={status} />
           <LikeButton liked={isLiked} className="absolute end-3 top-3 z-10" />
           {renderGroupButtons()}
