@@ -42,10 +42,10 @@ const PageHome: FC = () => {
           <SectionHowItWork />
         </div>
         {/* <SectionPromo1 /> */}
-        <div className="relative pt-24 pb-20 lg:pt-28">
+        {/* <div className="relative pt-24 pb-20 lg:pt-28">
           <BackgroundSection />
-          {/* <SectionGridMoreExplore groupCollections={groupCollections} /> */}
-        </div>
+            <SectionGridMoreExplore groupCollections={groupCollections} /> 
+        </div> */}
         <SectionSliderProductCard
           data={carouselProducts2}
           heading="Best Sellers"
