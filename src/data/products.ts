@@ -19,6 +19,12 @@ export const GetProducts = () => {
     }
   }
  
+const featuredImg= products?.map((item: any) => item?.images[1])
+const Image= featuredImg?.map((img: any) => img)
+
+const variantPrice= products?.map((item: any) => item)
+
+
 
   return products?.map((item: any) => ({
     id: item.id,
@@ -26,7 +32,7 @@ export const GetProducts = () => {
     handle: item.title.toLowerCase().replace(/\s+/g, '-'),
     createdAt: item.createdAt,
     vendor: 'Mooni',
-    price: item.priceSale,
+    price: item.variants[0]?.map((variant: any) => variant.additionalPrice) || '',
     featuredImage: {
       src: item?.defaultImage || productImage1,
       width: productImage1.width,
@@ -35,10 +41,10 @@ export const GetProducts = () => {
     },
     images: [
       {
-        src: item?.defaultImage || productImage1.src,
+        src: item?.images.map((img: any) => img.fileUrl) || productImage1.src,
         width: productImage1.width,
         height: productImage1.height,
-        alt: item.title,
+        alt: item?.images?.map((img: any) => img.fileName),
       },
     ],
     reviewNumber: 87,

@@ -1,5 +1,4 @@
 'use client'
-
 import { TProductItem } from '@/data/data'
 import NcImage from '@/shared/NcImage/NcImage'
 import { Link } from '@/shared/link'
@@ -80,7 +79,6 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
       </div>
     )
   }
-
   return (
     <>
       <div className={`product-card relative flex flex-col bg-transparent ${className}`}>
