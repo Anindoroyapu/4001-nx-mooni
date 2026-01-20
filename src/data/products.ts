@@ -4,6 +4,7 @@ import productImage1 from '@/images/products/p1.jpg'
 
 export const GetProducts = () => {
   const [products, setProducts] = useState<any>(null)
+  
   useEffect(() => {
     fetchData()
   }, [])
