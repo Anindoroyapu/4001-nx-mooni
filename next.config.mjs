@@ -22,10 +22,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'deno.ashaa.xyz',
+        port: '',
+        pathname: '/**',
       },
-        {
+      {
         protocol: 'http',
         hostname: 'deno.ashaa.xyz',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
