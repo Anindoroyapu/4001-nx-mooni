@@ -31,9 +31,16 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+       {
+        protocol: 'https',
+        hostname: 'deno.ashaa.xyz',
+        pathname: '/uploads/**',
+      },
     ],
     domains: ['deno.ashaa.xyz'],
+    unoptimized: true,
   },
+
 }
 
 export default nextConfig
