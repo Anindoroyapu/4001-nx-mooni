@@ -20,7 +20,7 @@ const nextConfig = {
         hostname: 'admin.ashaa.xyz',
       },
       {
-        protocol: 'http',
+        protocol: 'https',
         hostname: 'deno.ashaa.xyz',
       },
     ],
