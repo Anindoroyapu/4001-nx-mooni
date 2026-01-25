@@ -32,6 +32,7 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
+    domains: ['deno.ashaa.xyz'],
   },
 }
 
