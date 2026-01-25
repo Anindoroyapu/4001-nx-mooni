@@ -23,6 +23,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'deno.ashaa.xyz',
       },
+        {
+        protocol: 'http',
+        hostname: 'deno.ashaa.xyz',
+      },
     ],
   },
 }
