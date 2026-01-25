@@ -17,7 +17,7 @@ const NcImage: FC<NcImageProps> = ({
   
   return (
     <div className={containerClassName}>
-      <Image className={className} alt={alt} src={src} {...args} />
+      <img className={className} alt={alt} src={src} {...args} />
     </div> 
   );
 };
