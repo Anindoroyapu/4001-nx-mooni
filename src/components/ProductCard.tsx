@@ -3,6 +3,7 @@ import { TProductItem } from '@/data/data'
 import NcImage from '@/shared/NcImage/NcImage'
 import { ArrowsPointingOutIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { StarIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
 import { FC } from 'react'
 import AddToCardButton from './AddToCardButton'
 import LikeButton from './LikeButton'
@@ -49,20 +50,21 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
   const renderGroupButtons = () => {
     return (
       <div className="invisible absolute inset-x-1 bottom-0 flex justify-center gap-1.5 opacity-0 transition-all group-hover:visible group-hover:bottom-4 group-hover:opacity-100">
-        <AddToCardButton
-          as={'button'}
-          className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-xs/normal text-white shadow-lg hover:bg-neutral-800"
-          title={title || ''}
-          imageUrl={featuredImage?.src || ''}
-          price={price || 0}
-          quantity={1}
-          size={selectedOptions?.find((option: any) => option.name === 'Size')?.value}
-          color={selectedOptions?.find((option: any) => option.name === 'Color')?.value}
-        >
-          <ShoppingBagIcon className="-ml-1 size-3.5" />
-          <span>Add to bag</span>
-        </AddToCardButton>
-
+        <Link href={`/checkout?products=${data?.id}`}>
+          <AddToCardButton
+            as={'button'}
+            className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-xs/normal text-white shadow-lg hover:bg-neutral-800"
+            title={title || ''}
+            imageUrl={featuredImage?.src || ''}
+            price={price || 0}
+            quantity={1}
+            size={selectedOptions?.find((option: any) => option.name === 'Size')?.value}
+            color={selectedOptions?.find((option: any) => option.name === 'Color')?.value}
+          >
+            <ShoppingBagIcon className="-ml-1 size-3.5" />
+            <span>Add to bag</span>
+          </AddToCardButton>
+        </Link>
         <button
           className="flex cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-xs/normal text-neutral-950 shadow-lg hover:bg-neutral-50"
           type="button"
@@ -77,6 +79,7 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
       </div>
     )
   }
+
   return (
     <>
       <div className={`product-card relative flex flex-col bg-transparent ${className}`}>
