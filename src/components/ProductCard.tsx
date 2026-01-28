@@ -1,7 +1,6 @@
 'use client'
 import { TProductItem } from '@/data/data'
 import NcImage from '@/shared/NcImage/NcImage'
-import { Link } from '@/shared/link'
 import { ArrowsPointingOutIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 import { StarIcon } from '@heroicons/react/24/solid'
 import { FC } from 'react'
@@ -19,21 +18,20 @@ interface Props {
 
 const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
   const { title, price, status, rating, options, handle, selectedOptions, reviewNumber, images, featuredImage } = data
-  const color = selectedOptions?.find((option:any) => option.name === 'Color')?.value
+  const color = selectedOptions?.find((option: any) => option.name === 'Color')?.value
 
   const { open: openAside, setProductQuickViewHandle } = useAside()
 
   const renderColorOptions = () => {
-    const optionColorValues = options?.find((option:any) => option.name === 'Color')?.optionValues
+    const optionColorValues = options?.find((option: any) => option.name === 'Color')?.optionValues
 
     if (!optionColorValues?.length) {
       return null
     }
 
- 
     return (
       <div className="flex gap-2">
-        {optionColorValues.map((color:any) => (
+        {optionColorValues.map((color: any) => (
           <div key={color.name} className="relative size-4 cursor-pointer overflow-hidden rounded-full">
             <div
               className="absolute inset-0 z-0 rounded-full bg-cover ring-1 ring-neutral-900/20 dark:ring-white/20"
@@ -58,8 +56,8 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
           imageUrl={featuredImage?.src || ''}
           price={price || 0}
           quantity={1}
-          size={selectedOptions?.find((option:any) => option.name === 'Size')?.value}
-          color={selectedOptions?.find((option:any) => option.name === 'Color')?.value}
+          size={selectedOptions?.find((option: any) => option.name === 'Size')?.value}
+          color={selectedOptions?.find((option: any) => option.name === 'Color')?.value}
         >
           <ShoppingBagIcon className="-ml-1 size-3.5" />
           <span>Add to bag</span>
@@ -90,12 +88,12 @@ const ProductCard: FC<Props> = ({ className = '', data, isLiked }) => {
             {featuredImage?.src && (
               <NcImage
                 containerClassName="flex aspect-w-11 aspect-h-12 w-full h-0"
-                src={featuredImage}
+                src={featuredImage?.src}
                 className="h-full w-full object-cover"
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 40vw"
                 alt={handle}
-              /> 
+              />
             )}
           </div>
           <ProductStatus status={status} />
