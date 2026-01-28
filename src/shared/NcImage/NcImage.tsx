@@ -14,10 +14,19 @@ const NcImage: FC<NcImageProps> = ({
   src,
   ...args
 }) => {
+  console.log(src, 'src2')
+  const isFill = (args as any).fill
+
   return (
     <div className={containerClassName}>
-      {/* <img className={className} alt={alt} src={src?.src} {...args} /> */}
-      <img className={className} alt={alt} src={src} />
+      <img
+        alt={'alt'}
+        src={src}
+        className={className}
+        {...(isFill ? { fill: true } : { width: 100, height: 100 })}
+        sizes="100vw"
+        {...args}
+      />
     </div>
   )
 }
