@@ -106,7 +106,7 @@ const CheckoutPage = async () => {
   }
 
   return (
-    <main className="container py-16 lg:pt-20 lg:pb-28">
+    <main className="container mt-10 py-16 lg:pt-20 lg:pb-28">
       <div className="mb-16">
         <h1 className="mb-5 block text-3xl font-semibold lg:text-4xl">Checkout</h1>
         <Breadcrumb

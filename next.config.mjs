@@ -19,19 +19,7 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'admin.ashaa.xyz',
       },
-      {
-        protocol: 'https',
-        hostname: 'deno.ashaa.xyz',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'http',
-        hostname: 'deno.ashaa.xyz',
-        port: '',
-        pathname: '/**',
-      },
-       {
+     {
         protocol: 'https',
         hostname: 'deno.ashaa.xyz',
         pathname: '/uploads/**',
@@ -42,5 +30,5 @@ const nextConfig = {
   },
 
 }
-
+ 
 export default nextConfig
