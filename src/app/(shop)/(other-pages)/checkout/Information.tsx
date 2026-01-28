@@ -181,7 +181,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
     sub_total: '',
     total: '',
     shipping: '',
-    Quantity: '',
+    quantity: '',
     product_id: '',
     aptSuite: '',
     city: '',
@@ -192,7 +192,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     try {
-      const endpointBase = 'https://admin.ashaa.xyz/api/MooniAddCheckout'
+      const endpointBase = 'https://admin.ashaa.xyz/api/MooniCheckout'
       const url = endpointBase
       const method = 'POST'
 
@@ -216,8 +216,12 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
         sub_total: formData.sub_total,
         total: formData.total,
         shipping: formData.shipping,
-        Quantity: formData.Quantity,
-        product_id: formData.product_id,
+        quantity: formData.quantity,
+        productId: '',
+        productName: '',
+        productSku: '',
+        status: '',
+        subTotal: ' ',
       }
 
       const res = await fetch(url, {
@@ -227,7 +231,6 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
         },
         body: JSON.stringify(payload),
       })
-      window.location.href = '/#/product'
     } catch (err) {
       console.error('POST Error:', err)
     }
@@ -238,13 +241,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
   }
 
   return (
-    <form
-      action="#"
-      method="POST"
-      onSubmit={(e) => {
-        handleSubmit(e)
-      }}
-    >
+    <div>
       <Fieldset>
         <FieldGroup className="mt-0!">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4">
@@ -267,9 +264,33 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
               />
             </Field>
           </div>
-
+          <Field>
+            <Label>Email</Label>
+            <Input
+              placeholder="example@example.com"
+              value={formData?.email || ''}
+              name="email"
+              onChange={handleInputChange}
+            />
+          </Field>
           {/* ============ */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-4">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4">
+            <Field>
+              <Label>Phone</Label>
+              <Input
+                placeholder="01xxxxxxxxx"
+                value={formData?.phone || ''}
+                name="phone"
+                onChange={handleInputChange}
+              />
+            </Field>
+            <Field>
+              <Label>City</Label>
+              <Input placeholder="Dhaka" value={formData?.city || ''} name="city" onChange={handleInputChange} />
+            </Field>
+          </div>
+          {/* ============ */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-1 sm:gap-4">
             <Field className="sm:col-span-2">
               <Label>Address</Label>
               <Input
@@ -280,60 +301,12 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
                 onChange={handleInputChange}
               />
             </Field>
-            <Field>
-              <Label>Apt, Suite *</Label>
-              <Input
-                placeholder="55U - DD5 "
-                value={formData?.aptSuite || ''}
-                name="aptSuite"
-                onChange={handleInputChange}
-              />
-            </Field>
-          </div>
-
-          {/* ============ */}
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4">
-            <Field>
-              <Label>City</Label>
-              <Input placeholder="Norris" value={formData?.city || ''} name="city" onChange={handleInputChange} />
-            </Field>
-            <Field>
-              <Label>Country</Label>
-              <Select defaultValue="United States " name="country" onChange={handleInputChange}>
-                <option value="United States">United States</option>
-                <option value="United States">Canada</option>
-                <option value="United States">Mexico</option>
-                <option value="United States">Israel</option>
-                <option value="United States">France</option>
-                <option value="United States">England</option>
-                <option value="United States">Laos</option>
-                <option value="United States">China</option>
-              </Select>
-            </Field>
-            <Field>
-              <Label>State/Province</Label>
-              <Input
-                placeholder="Texas"
-                value={formData?.stateProvince || ''}
-                name="stateProvince"
-                onChange={handleInputChange}
-              />
-            </Field>
-            <Field>
-              <Label>Postal code</Label>
-              <Input
-                placeholder="2500"
-                value={formData?.postalCode || ''}
-                name="postalCode"
-                onChange={handleInputChange}
-              />
-            </Field>
           </div>
 
           <Field className="max-w-lg">
             <Legend>Address type</Legend>
             <RadioGroup
-              className="mt-1.5 grid grid-cols-1 gap-2 space-y-0! sm:grid-cols-2 sm:gap-3"
+              className="mt-1.5 grid grid-cols-1 gap-2 space-y-0! sm:grid-cols-2 sm:gap-1"
               name="addressType"
               defaultValue="at-home"
               onChange={(value: string) => setFormData((prev: any) => ({ ...prev, addressType: value }))}
@@ -342,7 +315,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
               <RadioField>
                 <Label>
                   <span className="text-sm font-medium">
-                    Home <span className="font-light">(All Day Delivery)</span>
+                    Inside Dhaka <span className="font-light">(60TK Delivery)</span>
                   </span>
                 </Label>
                 <Radio value="at-home" defaultChecked />
@@ -351,16 +324,55 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
               <RadioField>
                 <Label>
                   <span className="text-sm font-medium">
-                    Office
-                    <span className="font-light">
-                      (Delivery <span className="font-medium">9 AM - 5 PM</span>)
-                    </span>
+                    Outside Dhaka
+                    <span className="font-light"> ( 120TK Delivery)</span>
                   </span>
                 </Label>
                 <Radio value="at-office" />
               </RadioField>
             </RadioGroup>
           </Field>
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4">
+            <Field>
+              <Label>Size</Label>
+              <Select name="size" onChange={handleInputChange}>
+                <option value="" defaultChecked>
+                  Select size
+                </option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+                <option value="xxxl">XXXL</option>
+              </Select>
+            </Field>
+            <Field>
+              <Label>Quantity</Label>
+              <Select name="quantity" onChange={handleInputChange}>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+              </Select>
+            </Field>
+          </div>
 
           {/* ============ */}
           <div className="flex flex-wrap gap-2.5 pt-6">
@@ -373,7 +385,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
           </div>
         </FieldGroup>
       </Fieldset>
-    </form>
+    </div>
   )
 }
 
