@@ -6,7 +6,7 @@ import ButtonPrimary from '@/shared/Button/ButtonPrimary'
 import { Field, Label } from '@/shared/fieldset'
 import { Input } from '@/shared/input'
 import { Link } from '@/shared/link'
-import { Coordinate01Icon, InformationCircleIcon, PaintBucketIcon } from '@hugeicons/core-free-icons'
+import { Coordinate01Icon, PaintBucketIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Metadata } from 'next'
 import Form from 'next/form'
@@ -25,7 +25,6 @@ const CheckoutPage = async () => {
     'use server'
     const discountCode = formData.get('discount-code')?.toString() || ''
     console.log('Discount code:', discountCode)
-    // Here you can implement the logic to apply the discount code
   }
 
   const renderProduct = (product: TCardProduct) => {
@@ -171,7 +170,7 @@ const CheckoutPage = async () => {
           <ButtonPrimary className="mt-8 w-full" href="/order-successful">
             Confirm order
           </ButtonPrimary>
-          <div className="mt-5 flex items-center justify-center text-sm text-neutral-500 dark:text-neutral-400">
+          {/* <div className="mt-5 flex items-center justify-center text-sm text-neutral-500 dark:text-neutral-400">
             <p className="relative block pl-5">
               <HugeiconsIcon
                 icon={InformationCircleIcon}
@@ -202,7 +201,7 @@ const CheckoutPage = async () => {
               </Link>
               {` `} infomation
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </main>
