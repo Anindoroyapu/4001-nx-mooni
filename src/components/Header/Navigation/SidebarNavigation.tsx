@@ -2,7 +2,6 @@
 
 import { Divider } from '@/components/Divider'
 import { TNavigationItem } from '@/data/navigation'
-import ButtonPrimary from '@/shared/Button/ButtonPrimary'
 import SocialsList from '@/shared/SocialsList/SocialsList'
 import { Link } from '@/shared/link'
 import { Disclosure, DisclosureButton, DisclosurePanel, useClose } from '@headlessui/react'
@@ -84,7 +83,7 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ data }) => {
           e.preventDefault()
           handleClose()
           // redirect('/search')
-              redirect('/')
+          redirect('/')
         }}
       >
         <div className="flex h-full items-center gap-x-2.5 rounded-xl bg-neutral-50 px-3 py-3 dark:bg-neutral-800">
@@ -112,14 +111,14 @@ const SidebarNavigation: React.FC<SidebarNavigationProps> = ({ data }) => {
       <Divider className="mb-6" />
 
       {/* FOR OUR DEMO */}
-      <ButtonPrimary
+      {/* <ButtonPrimary
         href="https://themeforest.net/item/ciseco-shop-ecommerce-nextjs-template/44210635"
         target="_blank"
         rel="noopener noreferrer"
         className="px-8!"
       >
         Buy this template
-      </ButtonPrimary>
+      </ButtonPrimary> */}
     </div>
   )
 }
