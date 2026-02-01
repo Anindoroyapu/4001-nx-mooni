@@ -315,7 +315,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
               <RadioField>
                 <Label>
                   <span className="text-sm font-medium">
-                    Inside Dhaka <span className="font-light">(60TK Delivery)</span>
+                    Inside Dhaka <span className="font-light">(70TK Delivery)</span>
                   </span>
                 </Label>
                 <Radio value="at-home" defaultChecked />
@@ -325,7 +325,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
                 <Label>
                   <span className="text-sm font-medium">
                     Outside Dhaka
-                    <span className="font-light"> ( 120TK Delivery)</span>
+                    <span className="font-light"> ( 130TK Delivery)</span>
                   </span>
                 </Label>
                 <Radio value="at-office" />
