@@ -4,7 +4,6 @@ import { getCurrencies, getHeaderDropdownCategories, getLanguages, getNavMegaMen
 import clsx from 'clsx'
 import { FC } from 'react'
 import AvatarDropdown from './AvatarDropdown'
-import CartBtn from './CartBtn'
 import CategoriesDropdown from './CategoriesDropdown'
 import HamburgerBtnMenu from './HamburgerBtnMenu'
 import SearchBtnPopover from './SearchBtnPopover'
@@ -46,7 +45,7 @@ const Header: FC<HeaderProps> = async ({ hasBorderBottom = true }) => {
 
               <SearchBtnPopover />
               <AvatarDropdown />
-              <CartBtn />
+              {/* <CartBtn /> */}
             </div>
           </div>
         </div>
