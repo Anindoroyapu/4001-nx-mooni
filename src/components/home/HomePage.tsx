@@ -1,21 +1,12 @@
 'use client'
-import { FC } from 'react'
-import BackgroundSection from '@/components/BackgroundSection/BackgroundSection'
 import { Divider } from '@/components/Divider'
-import SectionClientSay from '@/components/SectionClientSay'
-import SectionCollectionSlider from '@/components/SectionCollectionSlider'
-import SectionCollectionSlider2 from '@/components/SectionCollectionSlider2'
 import SectionGridFeatureItems from '@/components/SectionGridFeatureItems'
-import SectionGridMoreExplore from '@/components/SectionGridMoreExplore/SectionGridMoreExplore'
 import SectionHero2 from '@/components/SectionHero/SectionHero2'
-import SectionHowItWork from '@/components/SectionHowItWork/SectionHowItWork'
 import SectionPromo2 from '@/components/SectionPromo2'
-import SectionSliderLargeProduct from '@/components/SectionSliderLargeProduct'
 import SectionSliderProductCard from '@/components/SectionSliderProductCard'
 import { getBlogPosts, getCollections, getGroupCollections } from '@/data/data'
 import { GetProducts } from '@/data/products'
-
-
+import { FC } from 'react'
 
 const PageHome: FC = () => {
   const allCollections = getCollections()
@@ -28,8 +19,6 @@ const PageHome: FC = () => {
   const carouselProducts3 = products.slice(1, 5)
   const blogPosts = getBlogPosts()
 
-  
-
   return (
     <div className="nc-PageHome relative overflow-hidden">
       <SectionHero2 />
@@ -38,9 +27,9 @@ const PageHome: FC = () => {
       <div className="relative container my-24 flex flex-col gap-y-24 lg:my-32 lg:gap-y-32">
         <SectionSliderProductCard data={carouselProducts1} />
         <Divider />
-        <div className="pb-16">
+        {/* <div className="pb-16">
           <SectionHowItWork />
-        </div>
+        </div> */}
         {/* <SectionPromo1 /> */}
         {/* <div className="relative pt-24 pb-20 lg:pt-28">
           <BackgroundSection />
@@ -52,7 +41,7 @@ const PageHome: FC = () => {
           subHeading="Best selling of the month"
         />
         <SectionPromo2 />
-        <SectionSliderLargeProduct products={carouselProducts3} />
+        {/* <SectionSliderLargeProduct products={carouselProducts3} /> */}
         <SectionGridFeatureItems data={products} />
         {/* <Divider /> */}
         {/* <SectionCollectionSlider2 collections={departmentCollections} /> */}

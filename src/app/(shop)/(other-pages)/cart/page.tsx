@@ -128,24 +128,24 @@ const CartPage = async () => {
                 <div className="flex justify-between pb-4">
                   <span>Subtotal</span>
                   <span className="font-semibold text-neutral-900 dark:text-neutral-200">
-                    ${cart.cost.subtotal.toFixed(2)}
+                    ৳{cart.cost.subtotal.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between py-4">
                   <span>Shipping estimate</span>
                   <span className="font-semibold text-neutral-900 dark:text-neutral-200">
-                    ${cart.cost.shipping.toFixed(2)}
+                    ৳{cart.cost.shipping.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between py-4">
                   <span>Tax estimate</span>
                   <span className="font-semibold text-neutral-900 dark:text-neutral-200">
-                    ${cart.cost.tax.toFixed(2)}
+                    ৳{cart.cost.tax.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between pt-4 text-base font-semibold text-neutral-900 dark:text-neutral-200">
                   <span>Order total</span>
-                  <span>${cart.cost.total.toFixed(2)}</span>
+                  <span>৳{cart.cost.total.toFixed(2)}</span>
                 </div>
               </div>
               <ButtonPrimary href="/checkout" className="mt-8 w-full">

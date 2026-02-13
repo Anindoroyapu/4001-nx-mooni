@@ -174,20 +174,20 @@ const Page = async ({ params }: { params: Promise<{ number: string }> }) => {
           <dl className="mt-8 flex flex-col gap-y-5 text-sm lg:col-span-5 lg:mt-0">
             <div className="flex items-center justify-between">
               <dt className="text-neutral-600 dark:text-neutral-300">Subtotal</dt>
-              <dd className="font-medium">$72</dd>
+              <dd className="font-medium">৳72</dd>
             </div>
             <div className="flex items-center justify-between">
               <dt className="text-neutral-600 dark:text-neutral-300">Shipping</dt>
-              <dd className="font-medium">$5</dd>
+              <dd className="font-medium">৳5</dd>
             </div>
             <div className="flex items-center justify-between">
               <dt className="text-neutral-600 dark:text-neutral-300">Tax</dt>
-              <dd className="font-medium">$6.16</dd>
+              <dd className="font-medium">৳6.16</dd>
             </div>
             <Divider />
             <div className="flex items-center justify-between">
               <dt className="font-medium">Order total</dt>
-              <dd className="font-medium">$83.16</dd>
+              <dd className="font-medium">৳83.16</dd>
             </div>
           </dl>
         </div>

@@ -41,7 +41,7 @@ const AsideSidebarCart = async ({ className = '' }: Props) => {
           <div>
             <div className="flex justify-between text-base font-medium text-gray-900 dark:text-neutral-100">
               <p className="font-medium">Subtotal</p>
-              <p className="font-medium">${cart.cost.subtotal}</p>
+              <p className="font-medium">৳{cart.cost.subtotal}</p>
             </div>
             <p className="mt-0.5 text-sm text-neutral-500 dark:text-neutral-400">
               Shipping and taxes calculated at checkout.

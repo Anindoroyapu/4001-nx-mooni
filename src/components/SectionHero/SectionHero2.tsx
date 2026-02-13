@@ -21,7 +21,8 @@ const data = [
     heading: 'Exclusive collection <br /> for everyone',
     subHeading: 'In this season, find the best 🔥',
     btnText: 'Explore shop now',
-    btnHref: '/collections/all',
+    btnHref: '/',
+    // btnHref: '/collections/all',
   },
   {
     id: 2,
@@ -29,7 +30,8 @@ const data = [
     heading: 'Exclusive collection <br /> for everyone',
     subHeading: 'In this season, find the best 🔥',
     btnText: 'Explore shop now',
-    btnHref: '/collections/all',
+    btnHref: '/',
+    // btnHref: '/collections/all',
   },
   {
     id: 3,
@@ -37,7 +39,8 @@ const data = [
     heading: 'Exclusive collection <br /> for everyone',
     subHeading: 'In this season, find the best 🔥',
     btnText: 'Explore shop now',
-    btnHref: '/collections/all',
+    btnHref: '/',
+    // btnHref: '/collections/all',
   },
 ]
 

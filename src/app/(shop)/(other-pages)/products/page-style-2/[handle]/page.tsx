@@ -42,8 +42,8 @@ export default async function Page({ params }: { params: Promise<{ handle: strin
   }
 
   const { title, status, featuredImage, rating, reviewNumber, options, price, selectedOptions, images } = product
-  const sizeSelected = selectedOptions?.find((option:any) => option.name === 'Size')?.value || ''
-  const colorSelected = selectedOptions?.find((option:any) => option.name === 'Color')?.value || ''
+  const sizeSelected = selectedOptions?.find((option: any) => option.name === 'Size')?.value || ''
+  const colorSelected = selectedOptions?.find((option: any) => option.name === 'Color')?.value || ''
 
   const renderSectionSidebar = () => {
     return (
@@ -51,7 +51,7 @@ export default async function Page({ params }: { params: Promise<{ handle: strin
         <div className="flex flex-col">
           {/* ----------  HEADING ----------  */}
           <div className="flex items-center justify-between gap-x-5">
-            <div className="flex text-2xl font-semibold">${price?.toFixed(2)}</div>
+            <div className="flex text-2xl font-semibold">৳{price?.toFixed(2)}</div>
 
             <a href="#reviews" className="flex items-center text-sm font-medium">
               <div>

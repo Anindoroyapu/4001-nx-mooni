@@ -85,22 +85,22 @@ export default async function Page() {
             <dl className="space-y-6 border-t border-neutral-200 pt-6 text-sm font-medium text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">
               <div className="flex justify-between">
                 <dt className="uppercase">Subtotal</dt>
-                <dd className="text-neutral-900 dark:text-neutral-100">${order.cost.subtotal.toFixed(2)}</dd>
+                <dd className="text-neutral-900 dark:text-neutral-100">৳{order.cost.subtotal.toFixed(2)}</dd>
               </div>
 
               <div className="flex justify-between">
                 <dt className="uppercase">Shipping</dt>
-                <dd className="text-neutral-900 dark:text-neutral-100">${order.cost.shipping.toFixed(2)}</dd>
+                <dd className="text-neutral-900 dark:text-neutral-100">৳{order.cost.shipping.toFixed(2)}</dd>
               </div>
 
               <div className="flex justify-between">
                 <dt className="uppercase">Taxes</dt>
-                <dd className="text-neutral-900 dark:text-neutral-100">${order.cost.tax.toFixed(2)}</dd>
+                <dd className="text-neutral-900 dark:text-neutral-100">৳{order.cost.tax.toFixed(2)}</dd>
               </div>
 
               <div className="flex items-center justify-between border-t border-neutral-200 pt-6 text-neutral-900 dark:border-neutral-700 dark:text-neutral-100">
                 <dt className="text-base uppercase">Total</dt>
-                <dd className="text-base">${order.cost.total.toFixed(2)}</dd>
+                <dd className="text-base">৳{order.cost.total.toFixed(2)}</dd>
               </div>
             </dl>
 
