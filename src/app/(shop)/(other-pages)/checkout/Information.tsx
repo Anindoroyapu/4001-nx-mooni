@@ -170,7 +170,38 @@ const ContactInfo = ({ onClose }: { onClose: () => void }) => {
   )
 }
 
+const ThankYouModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (value: boolean) => void }) => {
+  if (!isOpen) return null
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+      <div className="mx-4 w-full max-w-md rounded-2xl bg-white p-8 text-center dark:bg-neutral-800">
+        <div className="mb-4 flex justify-center">
+          <div className="rounded-full bg-green-100 p-3 dark:bg-green-900">
+            <svg className="h-8 w-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+        <h2 className="mb-2 text-2xl font-bold text-neutral-900 dark:text-white">Thank You!</h2>
+        <p className="mb-6 text-neutral-600 dark:text-neutral-400">
+          Your order has been placed successfully. We'll send you a confirmation email shortly.
+        </p>
+        <ButtonPrimary onClick={() => setIsOpen(false)} className="w-full">
+          Continue Shopping
+        </ButtonPrimary>
+      </div>
+    </div>
+  )
+}
+
 const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -188,6 +219,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
     country: '',
     stateProvince: '',
     postalCode: '',
+    status: 'pending',
   })
   const handleSubmit = async (e: any) => {
     e.preventDefault()
@@ -220,7 +252,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
         productId: '',
         productName: '',
         productSku: '',
-        status: '',
+        status: formData.status,
         subTotal: ' ',
       }
 
@@ -231,6 +263,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
         },
         body: JSON.stringify(payload),
       })
+      setIsOpen(true)
     } catch (err) {
       console.error('POST Error:', err)
     }
@@ -385,6 +418,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
           </div>
         </FieldGroup>
       </Fieldset>
+      {<ThankYouModal isOpen={isOpen} setIsOpen={(value: boolean) => setIsOpen(value)} />}
     </div>
   )
 }
