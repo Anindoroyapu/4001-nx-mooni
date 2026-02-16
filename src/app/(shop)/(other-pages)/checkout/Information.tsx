@@ -174,7 +174,7 @@ const ThankYouModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="fixed inset-0 z-50 flex w-full items-center justify-center bg-black/50">
       <div className="mx-4 w-full max-w-md rounded-2xl bg-white p-8 text-center dark:bg-neutral-800">
         <div className="mb-4 flex justify-center">
           <div className="rounded-full bg-green-100 p-3 dark:bg-green-900">
@@ -247,7 +247,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
     lastName: '',
     email: '',
     phone: '',
-    size: '',
+    size: 'm',
     address: '',
     aptSuite: '',
     city: '',
@@ -294,8 +294,8 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
 
       sub_total: subTotal,
       total,
-      shipping: shippingCost,
-      quantity: formData.quantity,
+      shipping: shippingCost.toString(),
+      quantity: formData.quantity.toString(),
       productId: productId,
       productName: products.name,
       productSku: products.sku || '',
@@ -338,6 +338,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
                 value={formData?.firstName || ''}
                 name="firstName"
                 onChange={handleInputChange}
+                required
               />
             </Field>
             <Field>
@@ -347,6 +348,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
                 value={formData?.lastName || ''}
                 name="lastName"
                 onChange={handleInputChange}
+                required
               />
             </Field>
           </div>
@@ -357,6 +359,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
               value={formData?.email || ''}
               name="email"
               onChange={handleInputChange}
+              required
             />
           </Field>
           {/* ============ */}
@@ -368,6 +371,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
                 value={formData?.phone || ''}
                 name="phone"
                 onChange={handleInputChange}
+                required
               />
             </Field>
             <Field>
@@ -385,6 +389,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
                 type={'text'}
                 name="address"
                 onChange={handleInputChange}
+                required
               />
             </Field>
           </div>
@@ -415,7 +420,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4">
             <Field>
               <Label>Size</Label>
-              <Select name="size" onChange={handleInputChange}>
+              <Select name="size" onChange={handleInputChange} required>
                 <option value="" defaultChecked>
                   Select size
                 </option>
@@ -429,7 +434,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
             </Field>
             <Field>
               <Label>Quantity</Label>
-              <Select name="quantity" onChange={handleInputChange}>
+              <Select name="quantity" onChange={handleInputChange} required>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -463,7 +468,12 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
           </div>
           {/* ============ */}
           <div className="flex flex-wrap gap-2.5 pt-6">
-            <ButtonPrimary type="submit" className="cursor-pointer" onClick={handleSubmit}>
+            <ButtonPrimary
+              type="submit"
+              className="cursor-pointer"
+              onClick={handleSubmit}
+              disabled={!formData?.address || !formData?.phone}
+            >
               Confirm Order
             </ButtonPrimary>
             <ButtonThird type="button" className="cursor-pointer" onClick={onClose}>
