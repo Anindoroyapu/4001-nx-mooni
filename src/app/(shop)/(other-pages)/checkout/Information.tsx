@@ -191,9 +191,9 @@ const ThankYouModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val
         <p className="mb-6 text-neutral-600 dark:text-neutral-400">
           Your order has been placed successfully. We'll send you a confirmation email shortly.
         </p>
-        <ButtonPrimary onClick={() => setIsOpen(false)} className="w-full">
-          Continue Shopping
-        </ButtonPrimary>
+        <Link href={'/'}>
+          <ButtonPrimary className="w-full">Continue Shopping</ButtonPrimary>
+        </Link>
       </div>
     </div>
   )
@@ -237,6 +237,10 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
     addressType: 'inside' | 'outside'
     quantity: number
     status: string
+    sub_total: string
+    total: string
+    shipping: string
+    product_id: string
   }
   const [formData, setFormData] = useState<TFormData>({
     firstName: '',
@@ -253,6 +257,10 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
     addressType: 'inside',
     quantity: 1,
     status: 'pending',
+    sub_total: '',
+    total: '',
+    shipping: '',
+    product_id: productId,
   })
   const shippingCost = useMemo(() => {
     return formData.addressType === 'inside' ? 70 : 130
@@ -263,7 +271,7 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
   }, [products, formData.quantity])
 
   const total = useMemo(() => {
-    return subTotal + shippingCost
+    return (subTotal + shippingCost).toString()
   }, [subTotal, shippingCost])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -446,7 +454,9 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
             </Field>
           </div>
           <div className="mt-4">
-            <p>Product Price: {products?.priceSale || 0} Tk</p>
+            <p>
+              Product Price: {products?.priceSale || 0} Tk ( X {formData?.quantity})
+            </p>
             <p>Sub Total: {subTotal} Tk</p>
             <p>Shipping: {shippingCost} Tk</p>
             <p className="font-bold">Total: {total} Tk</p>
