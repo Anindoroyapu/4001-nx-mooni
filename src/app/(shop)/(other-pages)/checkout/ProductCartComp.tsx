@@ -10,21 +10,21 @@ const ProductCartComp = () => {
 
   const searchParams = useSearchParams()
   const Sl = searchParams.get('products') || ''
-
   useEffect(() => {
-    fetchData()
-  }, [])
-
-  const fetchData = async () => {
-    try {
-      const res = await fetch(`https://admin.ashaa.xyz/api/MooniAddProduct/${Sl}`)
-      const json = await res.json()
-      setProducts(json)
-    } catch (error) {
-      console.error('Error fetching data:', error)
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`https://admin.ashaa.xyz/api/MooniAddProduct/${Sl}`)
+        const json = await res.json()
+        setProducts(json)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
     }
-  }
 
+    if (Sl) {
+      fetchData()
+    }
+  }, [Sl])
   return (
     <div className="mt-8">
       <div className="relative flex py-8 first:pt-0 last:pb-0 sm:py-10 xl:py-12">

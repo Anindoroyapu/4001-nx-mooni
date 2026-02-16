@@ -136,7 +136,7 @@ const ContactInfo = ({ onClose }: { onClose: () => void }) => {
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <h3 className="text-lg font-semibold">Contact infomation</h3>
             <p className="text-sm">
-              Do not have an account?{` `}
+              Do not have an account?
               <Link href="/login" className="font-medium underline">
                 Log in
               </Link>
@@ -189,7 +189,7 @@ const ThankYouModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val
         </div>
         <h2 className="mb-2 text-2xl font-bold text-neutral-900 dark:text-white">Thank You!</h2>
         <p className="mb-6 text-neutral-600 dark:text-neutral-400">
-          Your order has been placed successfully. We'll send you a confirmation email shortly.
+          Your order has been placed successfully. We&apos;ll send you a confirmation email shortly.
         </p>
         <Link href={'/'}>
           <ButtonPrimary className="w-full">Continue Shopping</ButtonPrimary>
@@ -591,7 +591,6 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
 //     </div>
 //   )
 // }
-
 // const renderWallet = () => {
 //   const active = mothodActive === 'Wallet'
 //   return (
