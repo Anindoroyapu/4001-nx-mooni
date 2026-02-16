@@ -2,13 +2,13 @@
 import ButtonPrimary from '@/shared/Button/ButtonPrimary'
 import ButtonThird from '@/shared/Button/ButtonThird'
 import { Checkbox, CheckboxField } from '@/shared/checkbox'
-import { Field, FieldGroup, Fieldset, Label, Legend } from '@/shared/fieldset'
+import { Field, FieldGroup, Fieldset, Label } from '@/shared/fieldset'
 import { Input } from '@/shared/input'
-import { Radio, RadioField, RadioGroup } from '@/shared/radio'
 import { Select } from '@/shared/select'
 import clsx from 'clsx'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useMemo, useState } from 'react'
 
 type Tab = 'ContactInfo' | 'ShippingAddress' | 'PaymentMethod'
 
@@ -201,76 +201,121 @@ const ThankYouModal = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val
 
 const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const searchParams = useSearchParams()
 
-  const [formData, setFormData] = useState({
+  const productId = searchParams.get('products') || ''
+  const [products, setProduct] = useState<any>(null)
+
+  useEffect(() => {
+    if (!productId) return
+
+    const fetchProduct = async () => {
+      try {
+        const res = await fetch(`https://admin.ashaa.xyz/api/MooniAddProduct/${productId}`)
+        const data = await res.json()
+        setProduct(data)
+      } catch (error) {
+        console.error('Error fetching product:', error)
+      }
+    }
+
+    fetchProduct()
+  }, [productId])
+
+  type TFormData = {
+    firstName: string
+    lastName: string
+    email: string
+    phone: string
+    size: string
+    address: string
+    aptSuite: string
+    city: string
+    stateProvince: string
+    postalCode: string
+    country: string
+    addressType: 'inside' | 'outside'
+    quantity: number
+    status: string
+  }
+  const [formData, setFormData] = useState<TFormData>({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
     size: '',
     address: '',
-    sub_total: '',
-    total: '',
-    shipping: '',
-    quantity: '',
-    product_id: '',
     aptSuite: '',
     city: '',
-    country: '',
     stateProvince: '',
     postalCode: '',
+    country: '',
+    addressType: 'inside',
+    quantity: 1,
     status: 'pending',
   })
-  const handleSubmit = async (e: any) => {
+  const shippingCost = useMemo(() => {
+    return formData.addressType === 'inside' ? 70 : 130
+  }, [formData.addressType])
+
+  const subTotal = useMemo(() => {
+    return (products?.priceSale || 0) * formData.quantity
+  }, [products, formData.quantity])
+
+  const total = useMemo(() => {
+    return subTotal + shippingCost
+  }, [subTotal, shippingCost])
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!products) return
+
+    const payload = {
+      fullName: `${formData.firstName} ${formData.lastName}`,
+      email: formData.email,
+      phone: formData.phone,
+      size: formData.size,
+      address:
+        formData.address +
+        +formData.aptSuite +
+        +formData.city +
+        +formData.stateProvince +
+        +formData.postalCode +
+        +formData.country,
+
+      sub_total: subTotal,
+      total,
+      shipping: shippingCost,
+      quantity: formData.quantity,
+      productId: productId,
+      productName: products.name,
+      productSku: products.sku || '',
+      status: formData.status,
+    }
+
     try {
-      const endpointBase = 'https://admin.ashaa.xyz/api/MooniCheckout'
-      const url = endpointBase
-      const method = 'POST'
-
-      const payload: Record<string, any> = {
-        fullName: formData.firstName + ' ' + formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-        size: formData.size,
-        address:
-          formData.address +
-          ', ' +
-          formData.aptSuite +
-          ', ' +
-          formData.city +
-          ', ' +
-          formData.stateProvince +
-          ', ' +
-          formData.postalCode +
-          ', ' +
-          formData.country,
-        sub_total: formData.sub_total,
-        total: formData.total,
-        shipping: formData.shipping,
-        quantity: formData.quantity,
-        productId: '',
-        productName: '',
-        productSku: '',
-        status: formData.status,
-        subTotal: ' ',
-      }
-
-      const res = await fetch(url, {
-        method,
+      await fetch('https://admin.ashaa.xyz/api/MooniCheckout', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
       })
+
       setIsOpen(true)
     } catch (err) {
-      console.error('POST Error:', err)
+      console.error('Checkout error:', err)
     }
   }
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
-    setFormData((prev: any) => ({ ...prev, [name]: value }))
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === 'quantity' ? Number(value) : value,
+    }))
   }
 
   return (
@@ -335,36 +380,30 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
               />
             </Field>
           </div>
+          <div className="flex gap-10">
+            <label className="flex gap-2.5">
+              <input
+                type="radio"
+                name="addressType"
+                value="inside"
+                checked={formData.addressType === 'inside'}
+                onChange={handleInputChange}
+                className=" "
+              />
+              <div className="font-semibold">Inside Dhaka (70Tk)</div>
+            </label>
 
-          <Field className="max-w-lg">
-            <Legend>Address type</Legend>
-            <RadioGroup
-              className="mt-1.5 grid grid-cols-1 gap-2 space-y-0! sm:grid-cols-2 sm:gap-1"
-              name="addressType"
-              defaultValue="at-home"
-              onChange={(value: string) => setFormData((prev: any) => ({ ...prev, addressType: value }))}
-              aria-label="Address type"
-            >
-              <RadioField>
-                <Label>
-                  <span className="text-sm font-medium">
-                    Inside Dhaka <span className="font-light">(70TK Delivery)</span>
-                  </span>
-                </Label>
-                <Radio value="at-home" defaultChecked />
-              </RadioField>
-
-              <RadioField>
-                <Label>
-                  <span className="text-sm font-medium">
-                    Outside Dhaka
-                    <span className="font-light"> ( 130TK Delivery)</span>
-                  </span>
-                </Label>
-                <Radio value="at-office" />
-              </RadioField>
-            </RadioGroup>
-          </Field>
+            <label className="flex gap-2.5">
+              <input
+                type="radio"
+                name="addressType"
+                value="outside"
+                checked={formData.addressType === 'outside'}
+                onChange={handleInputChange}
+              />
+              <div className="font-semibold">Outside Dhaka (130Tk)</div>
+            </label>
+          </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-4">
             <Field>
               <Label>Size</Label>
@@ -406,13 +445,18 @@ const ShippingAddress = ({ onClose }: { onClose: () => void }) => {
               </Select>
             </Field>
           </div>
-
+          <div className="mt-4">
+            <p>Product Price: {products?.priceSale || 0} Tk</p>
+            <p>Sub Total: {subTotal} Tk</p>
+            <p>Shipping: {shippingCost} Tk</p>
+            <p className="font-bold">Total: {total} Tk</p>
+          </div>
           {/* ============ */}
           <div className="flex flex-wrap gap-2.5 pt-6">
-            <ButtonPrimary type="submit" onClick={handleSubmit}>
+            <ButtonPrimary type="submit" className="cursor-pointer" onClick={handleSubmit}>
               Confirm Order
             </ButtonPrimary>
-            <ButtonThird type="button" onClick={onClose}>
+            <ButtonThird type="button" className="cursor-pointer" onClick={onClose}>
               Cancel
             </ButtonThird>
           </div>

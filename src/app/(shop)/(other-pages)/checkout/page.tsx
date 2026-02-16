@@ -2,16 +2,14 @@ import NcInputNumber from '@/components/NcInputNumber'
 import Prices from '@/components/Prices'
 import { TCardProduct, getCart } from '@/data/data'
 import Breadcrumb from '@/shared/Breadcrumb'
-import ButtonPrimary from '@/shared/Button/ButtonPrimary'
-import { Field, Label } from '@/shared/fieldset'
-import { Input } from '@/shared/input'
 import { Link } from '@/shared/link'
 import { Coordinate01Icon, PaintBucketIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Metadata } from 'next'
-import Form from 'next/form'
 import Image from 'next/image'
+import cartImage from './11.jpg'
 import Information from './Information'
+import ProductCartComp from './ProductCartComp'
 
 export const metadata: Metadata = {
   title: 'Checkout Page',
@@ -117,12 +115,16 @@ const CheckoutPage = async () => {
         />
       </div>
 
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col gap-20 lg:flex-row">
         <div className="flex-1">
+          <ProductCartComp />
           <Information />
         </div>
+        <div className="hidden h-auto w-2/5 lg:block">
+          <Image alt="" src={cartImage} width={100} height={100} sizes="100vw" className="h-auto w-full" />
+        </div>
 
-        <div className="my-10 shrink-0 border-t lg:mx-10 lg:my-0 lg:border-t-0 lg:border-l xl:lg:mx-14 2xl:mx-16" />
+        {/* <div className="my-10 shrink-0 border-t lg:mx-10 lg:my-0 lg:border-t-0 lg:border-l xl:lg:mx-14 2xl:mx-16" />
 
         <div className="w-full lg:w-[36%]">
           <h3 className="text-lg font-semibold">Order summary</h3>
@@ -169,8 +171,8 @@ const CheckoutPage = async () => {
           </div>
           <ButtonPrimary className="mt-8 w-full" href="/order-successful">
             Confirm order
-          </ButtonPrimary>
-          {/* <div className="mt-5 flex items-center justify-center text-sm text-neutral-500 dark:text-neutral-400">
+          </ButtonPrimary> */}
+        {/* <div className="mt-5 flex items-center justify-center text-sm text-neutral-500 dark:text-neutral-400">
             <p className="relative block pl-5">
               <HugeiconsIcon
                 icon={InformationCircleIcon}
@@ -202,7 +204,7 @@ const CheckoutPage = async () => {
               {` `} infomation
             </p>
           </div> */}
-        </div>
+        {/* </div> */}
       </div>
     </main>
   )
