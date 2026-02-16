@@ -1,9 +1,6 @@
 'use client'
 
 import { getHeaderDropdownCategories } from '@/data/navigation'
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { Link } from '../Link'
 
 interface Props {
   className?: string
@@ -13,7 +10,7 @@ interface Props {
 export default function CategoriesDropdown({ className, categories }: Props) {
   return (
     <div className={className}>
-      <Popover className="group">
+      {/* <Popover className="group">
         <PopoverButton className="-m-2.5 flex items-center rounded-md p-2.5 text-sm font-medium focus:outline-hidden sm:text-base">
           <span>Shops</span>
           <ChevronDownIcon className="ms-2 size-5 text-neutral-700 group-data-open:-rotate-180" aria-hidden="true" />
@@ -42,7 +39,7 @@ export default function CategoriesDropdown({ className, categories }: Props) {
               </Link>
             ))}
           </div>
-          {/* FOOTER */}
+          
           <div className="bg-neutral-50 p-6 dark:bg-neutral-700">
             <Link href="/collections/all">
               <span className="block text-sm font-medium">Go to our shop </span>
@@ -52,7 +49,7 @@ export default function CategoriesDropdown({ className, categories }: Props) {
             </Link>
           </div>
         </PopoverPanel>
-      </Popover>
+      </Popover> */}
     </div>
   )
 }

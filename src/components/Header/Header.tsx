@@ -31,7 +31,7 @@ const Header: FC<HeaderProps> = async ({ hasBorderBottom = true }) => {
           >
             <div className="flex items-center justify-center gap-x-3 sm:gap-x-8">
               <Logo />
-              <div className="hidden h-9 border-l border-neutral-200 md:block dark:border-neutral-700"></div>
+              {/* <div className="hidden h-9 border-l border-neutral-200 md:block dark:border-neutral-700"></div> */}
               <CategoriesDropdown categories={dropdownCategories} className="hidden md:block" />
             </div>
 
