@@ -1,5 +1,8 @@
 import NcInputNumber from '@/components/NcInputNumber'
 import Prices from '@/components/Prices'
+import cartImage from '@/components/checkout/11.jpg'
+import Information from '@/components/checkout/Information'
+import ProductCartComp from '@/components/checkout/ProductCartComp'
 import { TCardProduct, getCart } from '@/data/data'
 import Breadcrumb from '@/shared/Breadcrumb'
 import { Link } from '@/shared/link'
@@ -7,9 +10,6 @@ import { Coordinate01Icon, PaintBucketIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Metadata } from 'next'
 import Image from 'next/image'
-import cartImage from './11.jpg'
-import Information from './Information'
-import ProductCartComp from './ProductCartComp'
 
 export const metadata: Metadata = {
   title: 'Checkout Page',
